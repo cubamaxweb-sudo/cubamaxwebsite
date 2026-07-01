@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CubaMax - Envíos de Alimentos a Cuba</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #049899;
+            --primary-dark: #037a7a;
+             --secondary-color: #2c3e50;
+            --accent-color: #00d2d3;
+            --text-color: #4a4a4a;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #049899;
+            --warning-color: #f1c40f;
+            --info-color: #3498db;
+            --card-shadow: 0 10px 30px rgba(4, 152, 153, 0.08);
+            --hover-shadow: 0 15px 35px rgba(4, 152, 153, 0.15);
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            background-color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+        
+        /* Navbar Styling */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.98) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.04);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: var(--secondary-color) !important;
+            letter-spacing: -0.5px;
+            user-select: none; /* Prevent selection on rapid clicks */
+        }
+        
+        .navbar-brand span {
+            color: var(--primary-color);
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            color: var(--secondary-color) !important;
+            font-size: 0.95rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+            user-select: none;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color) !important;
+        }
+        
+        .nav-link::after {
+            display: none; 
+        }
+
+        .notification-bell {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .notification-bell:hover {
+            color: var(--primary-color);
+        }
+
+        .notification-badge {
+            background-color: #ff6b6b;
+            top: -8px;
+            right: -8px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(4, 152, 153, 0.9), rgba(3, 122, 122, 0.85)), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 10rem 0 8rem;
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+        
+        /* Buttons */
+        .btn {
+            border-radius: 50px;
+            padding: 0.8rem 2rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 15px rgba(4, 152, 153, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(4, 152, 153, 0.4);
+        }
+
+        .hero .btn-primary {
+            background-color: white;
+            color: var(--primary-color);
+            border-color: white;
+        }
+
+        .hero .btn-primary:hover {
+            background-color: var(--light-color);
+            color: var(--primary-dark);
+        }
+
+        .hero .btn-outline-light:hover {
+            background-color: rgba(255,255,255,0.1);
+            border-color: white;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background-color: white;
+            margin-top: -4rem;
+            position: relative;
+            z-index: 10;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+            padding: 3rem 1rem;
+        }
+
+        .stats-card {
+            background: transparent;
+            box-shadow: none;
+            padding: 1rem;
+            border-right: 1px solid #eee;
+        }
+
+        .col-md-3:last-child .stats-card {
+            border-right: none;
+        }
+
+        .animated-number {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+        }
+
+        .stats-title {
+            font-weight: 600;
+            color: var(--secondary-color);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Features Section */
+        .section-title {
+            color: var(--secondary-color);
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            background: var(--primary-color);
+            width: 50px;
+            height: 4px;
+            margin: 1rem auto;
+        }
+
+        .feature-card {
+            border: 1px solid rgba(0,0,0,0.03);
+            box-shadow: var(--card-shadow);
+            border-radius: 15px;
+            padding: 3rem 2rem;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .feature-icon {
+            background-color: rgba(4, 152, 153, 0.08);
+            color: var(--primary-color);
+            width: 90px;
+            height: 90px;
+        }
+
+        /* DYNAMIC PRODUCT STYLES */
+        .dynamic-product-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            background: white;
+            height: 100%;
+        }
+
+        .dynamic-product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .dynamic-product-img-wrapper {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .dynamic-product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .dynamic-product-card:hover .dynamic-product-img {
+            transform: scale(1.1);
+        }
+
+        .dynamic-product-body {
+            padding: 1.5rem;
+        }
+
+        .dynamic-price {
+            color: var(--primary-color);
+            font-weight: 800;
+            font-size: 1.25rem;
+        }
+
+        .admin-delete-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(220, 53, 69, 0.9);
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .dynamic-product-card:hover .admin-delete-btn {
+            opacity: 1;
+        }
+
+        /* Admin Modal Styles */
+        .admin-modal-content {
+            border-radius: 20px;
+            border: none;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .admin-modal-header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--dark-color));
+            color: white;
+            border-bottom: none;
+            padding: 1.5rem;
+        }
+
+        .admin-input {
+            border-radius: 10px;
+            padding: 0.8rem;
+            border: 2px solid #e9ecef;
+            transition: all 0.2s;
+        }
+
+        .admin-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(4, 152, 153, 0.1);
+        }
+
+        .image-preview-box {
+            width: 100%;
+            height: 200px;
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-preview-box:hover {
+            background-color: #f8f9fa;
+            border-color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a252f;
+            color: #ecf0f1;
+        }
+
+        footer h4, footer h5 {
+            color: white;
+            font-weight: 700;
+        }
+
+        footer .text-white {
+            color: #bdc3c7 !important;
+            transition: color 0.3s;
+        }
+
+        footer .text-white:hover {
+            color: var(--primary-color) !important;
+        }
+
+        footer .btn-primary {
+            background-color: var(--primary-color);
+            border: none;
+        }
+
+        /* Floating CTA */
+        .floating-cta {
+            background-color: var(--primary-color);
+            box-shadow: 0 5px 20px rgba(4, 152, 153, 0.4);
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s;
+            opacity: 0;
+            transform: scale(0);
+        }
+        
+        .floating-cta:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Toast */
+        .custom-toast {
+            border-left: 5px solid var(--primary-color);
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 5px;
+            margin-bottom: 10px;
+            min-width: 300px;
+            overflow: hidden;
+        }
+        
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .stats-card {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+                padding-bottom: 2rem;
+                margin-bottom: 1rem;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .stats-section {
+                margin-top: 0;
+                box-shadow: none;
+                background: #f8f9fa;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <div class="container">
+        <!-- Magic Trigger: Double click logo or repeated clicks on Home -->
+        <a class="navbar-brand" href="#">Cuba<span>Max</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item">
+                    <!-- Magic Trigger is here: href="index.html" -->
+                    <a class="nav-link active" href="index.html" id="magic-trigger-btn">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="productos.html">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="como-funciona.html">Cómo Funciona</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="testimonios.html">Testimonios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contacto.html">Contacto</a>
+                </li>
+                <li class="nav-item ms-lg-2">
+                    <div class="notification-bell position-relative p-2">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge position-absolute translate-middle badge rounded-pill">2</span>
+                    </div>
+                </li>
+            </ul>
+            <div class="d-flex ms-lg-4 mt-3 mt-lg-0">
+                <a href="Checkout.html" class="btn btn-primary px-4">Hacer Pedido</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-9 text-center" data-aos="fade-up" data-aos-delay="100">
+                    <h1 data-aos="fade-up" data-aos-delay="200">Conectando familias con amor y alimentos</h1>
+                    <p data-aos="fade-up" data-aos-delay="300">La plataforma más confiable para enviar alimentos frescos y productos esenciales a Cuba. Garantizamos calidad, rapidez y seguridad en cada entrega.</p>
+                    <div data-aos="fade-up" data-aos-delay="400" class="d-flex justify-content-center gap-3 flex-wrap">
+                        <a href="productos.html" class="btn btn-primary btn-lg shadow-sm">Ver Catálogo</a>
+                        <a href="como-funciona.html" class="btn btn-outline-light btn-lg">Cómo Funciona</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="pb-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-11">
+                    <div class="stats-section" data-aos="fade-up">
+                        <div class="row text-center">
+                            <div class="col-md-3 mb-4 mb-md-0">
+                                <div class="stats-card">
+                                    <i class="fas fa-box-open mb-3 text-muted" style="font-size: 1.5rem;"></i>
+                                    <span class="animated-number d-block fw-bold" data-count="12000">0</span>
+                                    <h5 class="stats-title mt-2">Envíos Exitosos</h5>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-4 mb-md-0">
+                                <div class="stats-card">
+                                    <i class="fas fa-smile mb-3 text-muted" style="font-size: 1.5rem;"></i>
+                                    <div class="d-flex justify-content-center align-items-baseline">
+                                        <span class="animated-number fw-bold" data-count="99">0</span><span class="h3 text-primary fw-bold">%</span>
+                                    </div>
+                                    <h5 class="stats-title mt-2">Clientes Felices</h5>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-4 mb-md-0">
+                                <div class="stats-card">
+                                    <i class="fas fa-clock mb-3 text-muted" style="font-size: 1.5rem;"></i>
+                                    <div class="d-flex justify-content-center align-items-baseline">
+                                        <span class="animated-number fw-bold" data-count="7">0</span><span class="h4 text-primary fw-bold ms-1">días</span>
+                                    </div>
+                                    <h5 class="stats-title mt-2">Promedio Entrega</h5>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="stats-card">
+                                    <i class="fas fa-map-marker-alt mb-3 text-muted" style="font-size: 1.5rem;"></i>
+                                    <span class="animated-number d-block fw-bold" data-count="16">0</span>
+                                    <h5 class="stats-title mt-2">Provincias</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DYNAMIC SECTION: This is where user added products will appear -->
+    <section id="dynamic-showcase" class="py-5 d-none">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title" data-aos="fade-up" id="dynamic-section-title">Nuevas Ofertas</h2>
+                <p class="text-muted" data-aos="fade-up" data-aos-delay="100">Productos seleccionados especialmente para ti.</p>
+            </div>
+            <div class="row g-4" id="dynamic-products-grid">
+                <!-- Javascript will inject products here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="py-5 bg-light-subtle">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <h2 class="section-title" data-aos="fade-up">La Excelencia de CubaMax</h2>
+                <p class="section-subtitle mx-auto" data-aos="fade-up" data-aos-delay="100">Nos diferenciamos por nuestro compromiso con la calidad y la satisfacción de las familias cubanas.</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card h-100 text-center">
+                        <div class="feature-icon mx-auto mb-4 rounded-circle d-flex align-items-center justify-content-center">
+                            <i class="fas fa-shipping-fast fa-2x"></i>
+                        </div>
+                        <h4 class="feature-title h5 fw-bold mb-3">Logística Optimizada</h4>
+                        <p class="text-muted mb-4">Red de distribución propia que asegura entregas en 7-10 días hábiles con monitoreo constante.</p>
+                        <a href="como-funciona.html" class="text-decoration-none fw-bold text-primary">Conocer proceso <i class="fas fa-arrow-right ms-1 small"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-card h-100 text-center">
+                        <div class="feature-icon mx-auto mb-4 rounded-circle d-flex align-items-center justify-content-center">
+                            <i class="fas fa-leaf fa-2x"></i>
+                        </div>
+                        <h4 class="feature-title h5 fw-bold mb-3">Frescura Garantizada</h4>
+                        <p class="text-muted mb-4">Alimentos seleccionados bajo estrictos estándares de calidad y conservación.</p>
+                        <a href="productos.html" class="text-decoration-none fw-bold text-primary">Ver productos <i class="fas fa-arrow-right ms-1 small"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-card h-100 text-center">
+                        <div class="feature-icon mx-auto mb-4 rounded-circle d-flex align-items-center justify-content-center">
+                            <i class="fas fa-shield-alt fa-2x"></i>
+                        </div>
+                        <h4 class="feature-title h5 fw-bold mb-3">Compra Segura</h4>
+                        <p class="text-muted mb-4">Protección total de tus datos y garantía de reembolso ante cualquier incidencia.</p>
+                        <a href="testimonios.html" class="text-decoration-none fw-bold text-primary">Leer opiniones <i class="fas fa-arrow-right ms-1 small"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="pt-5 pb-4">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-lg-4 col-md-6">
+                    <h4 class="mb-4 h3">Cuba<span style="color: var(--primary-color);">Max</span></h4>
+                    <p class="text-white-50 mb-4">Facilitamos el envío de amor y sustento a Cuba. Somos el puente confiable entre tú y tu familia, con un servicio profesional y humano.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3 fs-5"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white me-3 fs-5"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white me-3 fs-5"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white fs-5"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="mb-4 text-white">Navegación</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-white text-decoration-none opacity-75 hover-opacity-100">Inicio</a></li>
+                        <li class="mb-2"><a href="productos.html" class="text-white text-decoration-none opacity-75 hover-opacity-100">Productos</a></li>
+                        <li class="mb-2"><a href="como-funciona.html" class="text-white text-decoration-none opacity-75 hover-opacity-100">Cómo Funciona</a></li>
+                        <li class="mb-2"><a href="testimonios.html" class="text-white text-decoration-none opacity-75 hover-opacity-100">Testimonios</a></li>
+                        <li><a href="contacto.html" class="text-white text-decoration-none opacity-75 hover-opacity-100">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-4 text-white">Soporte al Cliente</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none opacity-75 hover-opacity-100">Centro de Ayuda</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none opacity-75 hover-opacity-100">Rastrear mi Pedido</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none opacity-75 hover-opacity-100">Política de Reembolso</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none opacity-75 hover-opacity-100">Términos de Servicio</a></li>
+                        <li><a href="#" class="text-white text-decoration-none opacity-75 hover-opacity-100">Privacidad</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-4 text-white">Boletín Informativo</h5>
+                    <p class="text-white-50 small">Recibe ofertas exclusivas y novedades.</p>
+                    <form class="mt-3 mb-4">
+                        <div class="input-group">
+                            <input type="email" class="form-control border-0" placeholder="Tu correo electrónico" required style="padding: 0.7rem;">
+                            <button class="btn btn-primary" type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </form>
+                    <div class="d-flex align-items-center gap-3 opacity-75">
+                        <i class="fab fa-cc-visa fa-2x text-white"></i>
+                        <i class="fab fa-cc-mastercard fa-2x text-white"></i>
+                        <i class="fab fa-cc-paypal fa-2x text-white"></i>
+                        <i class="fab fa-cc-amex fa-2x text-white"></i>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-5 border-secondary opacity-25">
+            <div class="text-center text-white-50 small">
+                <p class="mb-0">&copy; 2025 CubaMax Inc. Todos los derechos reservados. Hecho con <i class="fas fa-heart text-danger mx-1"></i> para Cuba.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+
+    <!-- Floating CTA -->
+    <div class="floating-cta" onclick="window.location.href='Checkout.html'" title="Ver Carrito">
+        <i class="fas fa-shopping-cart"></i>
+    </div>
+
+    <!-- ADMIN LOGIN MODAL -->
+    <div class="modal fade" id="adminLoginModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content admin-modal-content">
+                <div class="modal-body text-center p-4">
+                    <div class="mb-3 text-primary">
+                        <i class="fas fa-user-shield fa-3x"></i>
+                    </div>
+                    <h5 class="mb-3 fw-bold">Acceso Administrativo</h5>
+                    <input type="password" id="adminPinInput" class="form-control admin-input text-center fs-4 letter-spacing-2" placeholder="PIN" maxlength="6">
+                    <div class="d-grid mt-3">
+                        <button type="button" class="btn btn-primary" onclick="verifyAdminPin()">Acceder</button>
+                    </div>
+                    <button type="button" class="btn btn-link text-muted btn-sm mt-2" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN ADD PRODUCT MODAL -->
+    <div class="modal fade" id="addProductModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content admin-modal-content">
+                <div class="modal-header admin-modal-header">
+                    <h5 class="modal-title"><i class="fas fa-magic me-2"></i>Gestor de Contenido</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="newProductForm">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold small text-uppercase text-muted">Imagen del Producto</label>
+                            <input type="file" id="productImageFile" class="d-none" accept="image/*" onchange="previewImage(this)">
+                            <div class="image-preview-box" onclick="document.getElementById('productImageFile').click()" id="imagePreviewBox">
+                                <div class="text-center text-muted">
+                                    <i class="fas fa-cloud-upload-alt fa-2x mb-2"></i>
+                                    <p class="small mb-0">Toca para subir foto</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-8 mb-3">
+                                <label class="form-label fw-bold small text-uppercase text-muted">Nombre del Producto</label>
+                                <input type="text" class="form-control admin-input" id="productName" placeholder="Ej: Combo de Carnes" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label fw-bold small text-uppercase text-muted">Precio ($)</label>
+                                <input type="number" class="form-control admin-input" id="productPrice" placeholder="0.00" step="0.01" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold small text-uppercase text-muted">Descripción Corta</label>
+                            <textarea class="form-control admin-input" id="productDesc" rows="2" placeholder="Breve descripción del producto..."></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold small text-uppercase text-muted">Sección / Categoría</label>
+                            <select class="form-select admin-input" id="productSection">
+                                <option value="Nuevas Ofertas">Nuevas Ofertas (Superior)</option>
+                                <option value="Destacados del Mes">Destacados del Mes (Central)</option>
+                                <option value="Liquidación">Liquidación (Inferior)</option>
+                            </select>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="button" class="btn btn-primary py-2" onclick="saveProduct()">
+                                <i class="fas fa-plus-circle me-2"></i> Publicar Producto
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 50
+        });
+        
+        // --- ADMIN MAGIC LOGIC START ---
+        
+        // 1. Trigger Logic
+        let clickCounter = 0;
+        let clickTimer;
+        const triggerBtn = document.getElementById('magic-trigger-btn');
+        const SECRET_PIN = "51590438";
+        const STORAGE_KEY = "cubaMax_custom_products";
+
+        triggerBtn.addEventListener('click', (e) => {
+            // Allow normal navigation on single click, but intercept rapid clicks
+            clickCounter++;
+            
+            if (clickCounter === 1) {
+                // Set a timer to reset counter if user stops clicking
+                clickTimer = setTimeout(() => {
+                    clickCounter = 0;
+                }, 1000); // 1 second window
+            }
+
+            if (clickCounter >= 7) { // 5 clicks to activate
+                e.preventDefault(); // Stop navigation
+                clearTimeout(clickTimer);
+                clickCounter = 0;
+                const loginModal = new bootstrap.Modal(document.getElementById('adminLoginModal'));
+                loginModal.show();
+            }
+        });
+
+        // 2. Auth Logic
+        function verifyAdminPin() {
+            const input = document.getElementById('adminPinInput').value;
+            if (input === SECRET_PIN) {
+                bootstrap.Modal.getInstance(document.getElementById('adminLoginModal')).hide();
+                document.getElementById('adminPinInput').value = ''; // clear
+                const addModal = new bootstrap.Modal(document.getElementById('addProductModal'));
+                addModal.show();
+                showToast('Bienvenido, Administrador', 'success');
+            } else {
+                document.getElementById('adminPinInput').classList.add('is-invalid');
+                setTimeout(() => document.getElementById('adminPinInput').classList.remove('is-invalid'), 1000);
+            }
+        }
+
+        // 3. Image Preview Logic
+        let currentImageBase64 = null;
+        
+        function previewImage(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    currentImageBase64 = e.target.result;
+                    const box = document.getElementById('imagePreviewBox');
+                    box.style.backgroundImage = `url(${e.target.result})`;
+                    box.innerHTML = ''; // Remove text
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        // 4. Save Product Logic
+        function saveProduct() {
+            const name = document.getElementById('productName').value;
+            const price = document.getElementById('productPrice').value;
+            const desc = document.getElementById('productDesc').value;
+            const section = document.getElementById('productSection').value;
+
+            if (!name || !price || !currentImageBase64) {
+                showToast('Por favor completa nombre, precio e imagen', 'warning');
+                return;
+            }
+
+            const newProduct = {
+                id: Date.now(), // Unique ID
+                name,
+                price,
+                desc,
+                section,
+                image: currentImageBase64
+            };
+
+            // Get existing products
+            let products = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            products.push(newProduct);
+            
+            // Save back to storage
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
+
+            // Reset Form
+            document.getElementById('newProductForm').reset();
+            document.getElementById('imagePreviewBox').style.backgroundImage = 'none';
+            document.getElementById('imagePreviewBox').innerHTML = '<div class="text-center text-muted"><i class="fas fa-cloud-upload-alt fa-2x mb-2"></i><p class="small mb-0">Toca para subir foto</p></div>';
+            currentImageBase64 = null;
+
+            // Close modal and refresh view
+            bootstrap.Modal.getInstance(document.getElementById('addProductModal')).hide();
+            showToast('Producto publicado exitosamente', 'success');
+            renderDynamicProducts();
+        }
+
+        // 5. Render Logic
+        function renderDynamicProducts() {
+            const products = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            const container = document.getElementById('dynamic-products-grid');
+            const section = document.getElementById('dynamic-showcase');
+            const sectionTitle = document.getElementById('dynamic-section-title');
+
+            if (products.length === 0) {
+                section.classList.add('d-none');
+                return;
+            }
+
+            section.classList.remove('d-none');
+            container.innerHTML = '';
+
+            // Group by section or just show all. For this UI, we show all but update title based on last added
+            if (products.length > 0) {
+                // Use the section name of the most recently added product as the title (optional UX choice)
+                sectionTitle.textContent = products[products.length - 1].section; 
+            }
+
+            products.forEach(p => {
+                const col = document.createElement('div');
+                col.className = 'col-md-6 col-lg-3 fade-in-up'; // Custom animation class logic handled by CSS or AOS
+                col.setAttribute('data-aos', 'fade-up');
+                
+                col.innerHTML = `
+                    <div class="dynamic-product-card position-relative">
+                        <button class="admin-delete-btn" onclick="deleteProduct(${p.id})" title="Eliminar (Admin)">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                        <div class="dynamic-product-img-wrapper">
+                            <img src="${p.image}" class="dynamic-product-img" alt="${p.name}">
+                        </div>
+                        <div class="dynamic-product-body text-center">
+                            <h5 class="fw-bold mb-1">${p.name}</h5>
+                            <p class="text-muted small mb-2">${p.desc}</p>
+                            <div class="d-flex justify-content-center align-items-center gap-2 mb-3">
+                                <span class="dynamic-price">$${parseFloat(p.price).toFixed(2)}</span>
+                            </div>
+                            <button class="btn btn-outline-primary btn-sm rounded-pill px-3" onclick="addToOrder('${p.name}', ${p.price})">
+                                Agregar <i class="fas fa-cart-plus ms-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(col);
+            });
+        }
+
+        // 6. Delete Logic
+        window.deleteProduct = function(id) {
+            if(!confirm('¿Eliminar este producto?')) return;
+            
+            let products = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            products = products.filter(p => p.id !== id);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
+            renderDynamicProducts();
+            showToast('Producto eliminado', 'info');
+        }
+
+        // Initial Render on Load
+        document.addEventListener('DOMContentLoaded', renderDynamicProducts);
+
+        // --- END ADMIN MAGIC LOGIC ---
+
+        // Shopping cart functionality (Existing Logic)
+        let cart = [];
+        let shippingCost = 25.00;
+        let taxRate = 0.08; 
+        
+        function addToOrder(productName, price) {
+            price = parseFloat(price); // Ensure number
+            const existingProduct = cart.find(item => item.name === productName);
+            
+            if (existingProduct) {
+                existingProduct.quantity += 1;
+            } else {
+                cart.push({
+                    name: productName,
+                    price: price,
+                    quantity: 1
+                });
+            }
+            
+            // updateOrderSummary(); // Function exists in checkout context, here strictly for toast
+            showToast(`${productName} agregado al carrito`, 'success');
+        }
+        
+        function showToast(message, type = 'primary') {
+            const toastContainer = document.querySelector('.toast-container');
+            const toast = document.createElement('div');
+            toast.className = `custom-toast`;
+            
+            let iconClass = 'fa-info-circle';
+            let borderColor = 'var(--primary-color)';
+            
+            switch(type) {
+                case 'success':
+                    iconClass = 'fa-check-circle';
+                    borderColor = 'var(--success-color)';
+                    break;
+                case 'warning':
+                    iconClass = 'fa-exclamation-triangle';
+                    borderColor = 'var(--warning-color)';
+                    break;
+                case 'danger':
+                    iconClass = 'fa-times-circle';
+                    borderColor = '#e74c3c';
+                    break;
+            }
+            
+            toast.style.borderLeft = `5px solid ${borderColor}`;
+            
+            toast.innerHTML = `
+                <div class="toast-header border-bottom-0 pb-0">
+                    <strong class="me-auto text-dark"><i class="fas ${iconClass} me-2" style="color:${borderColor}"></i> CubaMax</strong>
+                    <button type="button" class="btn-close" onclick="this.parentElement.parentElement.remove()"></button>
+                </div>
+                <div class="toast-body pt-2">
+                    ${message}
+                </div>
+            `;
+            
+            toastContainer.appendChild(toast);
+            
+            setTimeout(() => toast.classList.add('show'), 100);
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 500);
+            }, 4000);
+        }
+        
+        // Animate numbers
+        function animateNumbers() {
+            const numberElements = document.querySelectorAll('.animated-number');
+            numberElements.forEach(element => {
+                const target = parseInt(element.getAttribute('data-count'));
+                const duration = 2000;
+                const start = 0;
+                const increment = target / (duration / 16);
+                
+                let current = start;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        clearInterval(timer);
+                        current = target;
+                    }
+                    element.textContent = Math.round(current);
+                }, 16);
+            });
+        }
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.classList.contains('animated-number')) {
+                        animateNumbers();
+                        observer.unobserve(entry.target);
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        document.querySelectorAll('.animated-number').forEach(el => observer.observe(el));
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-sm');
+                navbar.style.padding = '0.5rem 0';
+            } else {
+                navbar.classList.remove('shadow-sm');
+                navbar.style.padding = '1rem 0';
+            }
+            
+            // Floating CTA visibility
+            const floatingCta = document.querySelector('.floating-cta');
+            if (window.scrollY > 300) {
+                floatingCta.style.opacity = '1';
+                floatingCta.style.transform = 'scale(1)';
+            } else {
+                floatingCta.style.opacity = '0';
+                floatingCta.style.transform = 'scale(0)';
+            }
+        });
+    </script>
+</body>
+</html>

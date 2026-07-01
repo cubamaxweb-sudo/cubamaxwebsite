@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CubaMax - Contacto</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #049899;
+            --primary-dark: #037a7a;
+            --primary-light: #e6f5f5;
+            --secondary-color: #2c3e50;
+            --text-color: #333333;
+            --text-muted: #6c757d;
+            --light-bg: #f8fcfc;
+            --white: #ffffff;
+            --success-color: #2ecc71;
+            --warning-color: #f1c40f;
+            --info-color: #049899;
+        }
+        
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            line-height: 1.6;
+        }
+        
+        /* Navbar Styles */
+        .navbar {
+            background-color: var(--white);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            letter-spacing: -0.5px;
+        }
+        
+        .navbar-brand span {
+            color: var(--primary-color);
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            color: var(--secondary-color);
+            padding: 0.5rem 1rem;
+            margin: 0 0.2rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 0.6rem 1.5rem;
+            font-weight: 600;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(4, 152, 153, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(4, 152, 153, 0.3);
+        }
+
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+            border-radius: 8px;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* Header Section */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            padding: 4rem 0;
+            color: white;
+            text-align: center;
+            margin-bottom: 3rem;
+            border-radius: 0 0 30px 30px;
+        }
+
+        .section-title {
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+        
+        /* Contact Cards */
+        .contact-info-card {
+            background-color: var(--white);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            height: 100%;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.03);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            text-align: center;
+        }
+        
+        .contact-info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(4, 152, 153, 0.1);
+            border-color: var(--primary-light);
+        }
+        
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info-card:hover .contact-icon {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .contact-info-card h5 {
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Form Section */
+        .contact-form-wrapper {
+            background-color: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .form-header {
+            padding: 2rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .form-body {
+            padding: 2.5rem;
+        }
+        
+        .form-control, .form-select {
+            padding: 0.9rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            font-size: 0.95rem;
+            background-color: #fcfcfc;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-color);
+            background-color: #fff;
+            box-shadow: 0 0 0 4px rgba(4, 152, 153, 0.1);
+        }
+        
+        label.form-label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background-color: var(--white);
+            padding: 5rem 0;
+            margin-top: 4rem;
+        }
+
+        .faq-title {
+            color: var(--secondary-color);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .accordion-item {
+            border: 1px solid #eee;
+            border-radius: 12px !important;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            box-shadow: none;
+        }
+        
+        .accordion-button {
+            font-weight: 600;
+            color: var(--secondary-color);
+            padding: 1.2rem 1.5rem;
+            background-color: var(--white);
+        }
+        
+        .accordion-button:not(.collapsed) {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: none;
+        }
+        
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: transparent;
+        }
+
+        .accordion-button::after {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%232c3e50'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        }
+
+        .accordion-button:not(.collapsed)::after {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a252f;
+            color: #ecf0f1;
+        }
+
+        footer h4, footer h5 {
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        footer a {
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--primary-color) !important;
+        }
+
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255,255,255,0.1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        /* Toast */
+        .toast-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1060;
+        }
+        
+        .custom-toast {
+            background-color: white;
+            color: var(--text-color);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.5s ease;
+            border-left: 5px solid var(--primary-color);
+            width: 320px;
+        }
+        
+        .custom-toast.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* --- ADMIN SYSTEM STYLES (Hidden by default) --- */
+        .admin-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .admin-panel {
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .admin-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #f1c40f, #e67e22);
+        }
+
+        .admin-title {
+            font-weight: 800;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pin-pad-display {
+            background: #f1f5f9;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1rem;
+            font-size: 2rem;
+            text-align: center;
+            letter-spacing: 10px;
+            margin-bottom: 1.5rem;
+            font-family: monospace;
+            height: 60px;
+        }
+
+        /* Dynamic Product Card */
+        .dynamic-product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .dynamic-product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .dynamic-img-container {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .dynamic-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .dynamic-card-body {
+            padding: 1.5rem;
+        }
+
+        .delete-btn-admin {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(231, 76, 60, 0.9);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none; /* Only visible if logged in logic acts up, or we can toggle via JS */
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        /* Animations */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        @media (max-width: 767.98px) {
+            .section-title { font-size: 2rem; }
+            .page-header { padding: 3rem 0; border-radius: 0 0 20px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Cuba<span>Max</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item">
+                    <!-- Secret Trigger ID added here -->
+                    <a class="nav-link" href="index.html" id="secret-trigger-btn">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="productos.html">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="como-funciona.html">Cómo Funciona</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="testimonios.html">Testimonios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="contacto.html">Contacto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Checkout.html">Checkout</a>
+                </li>
+            </ul>
+            <div class="d-flex ms-lg-3 mt-3 mt-lg-0">
+                <a href="Checkout.html" class="btn btn-primary w-100 w-lg-auto">Hacer Pedido</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Header Section -->
+<header class="page-header">
+    <div class="container">
+        <h1 class="section-title">Contáctanos</h1>
+        <p class="section-subtitle">Estamos aquí para ayudarte. Conecta con nuestro equipo para resolver tus dudas sobre envíos a Cuba.</p>
+    </div>
+</header>
+
+<!-- DYNAMIC ZONE 1: Top -->
+<div class="container mb-5" id="dynamic-zone-top">
+    <!-- Dynamic items injected here -->
+</div>
+
+<!-- Contact Info Section -->
+<section class="pb-5" id="contacto">
+    <div class="container">
+        <div class="row justify-content-center mb-5" style="margin-top: -5rem;">
+            <div class="col-md-4 mb-4">
+                <div class="contact-info-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h5>Correo Electrónico</h5>
+                    <p class="text-muted mb-1">cubamaxpaqueteria@gmail.com</p>
+                    <p class="small text-success fw-bold">Respuesta en 24h</p>
+                    <a href="mailto:cubamaxpaqueteria@gmail.com" class="btn btn-sm btn-outline-primary mt-2 px-4">Escribir</a>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="contact-info-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h5>Línea Directa</h5>
+                    <p class="text-muted mb-1">+1 (730) 273-2033</p>
+                    <p class="small text-muted">Lun-Vie: 5 AM - 12 PM (EST)</p>
+                    <a href="tel:+17302732033" class="btn btn-sm btn-outline-primary mt-2 px-4">Llamar</a>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="contact-info-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h5>Chat en Vivo</h5>
+                    <p class="text-muted mb-1">Soporte WhatsApp</p>
+                    <p class="small text-success fw-bold">Disponible 24/7</p>
+                    <a href="https://wa.me/16822934236" target="_blank" class="btn btn-sm btn-outline-primary mt-2 px-4">Chatear</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="contact-form-wrapper">
+                    <div class="form-header">
+                        <h4 class="mb-0 fw-bold text-center" style="color: var(--secondary-color);">Envíanos un Mensaje</h4>
+                    </div>
+                    <div class="form-body">
+                        <form id="contact-form" action="https://formsubmit.co/cubamaxpaqueteria@gmail.com" method="POST">
+                            <input type="hidden" name="_subject" value="Nuevo mensaje de contacto - CubaMax">
+                            <input type="hidden" name="_next" value="https://tuweb.com/gracias.html">
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <label for="contact-name" class="form-label">Nombre Completo</label>
+                                    <input type="text" class="form-control" id="contact-name" name="name" placeholder="Ej. Juan Pérez" required>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <label for="contact-email" class="form-label">Correo Electrónico</label>
+                                    <input type="email" class="form-control" id="contact-email" name="email" placeholder="ejemplo@correo.com" required>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label for="contact-subject" class="form-label">Motivo de contacto</label>
+                                <select class="form-select" id="contact-subject" name="subject" required>
+                                    <option value="">Selecciona una opción...</option>
+                                    <option>Consulta general</option>
+                                    <option>Información de pedido</option>
+                                    <option>Rastrear envío</option>
+                                    <option>Soporte técnico</option>
+                                    <option>Facturación</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label for="contact-message" class="form-label">Tu Mensaje</label>
+                                <textarea class="form-control" id="contact-message" name="message" rows="5" placeholder="Describe cómo podemos ayudarte..." required></textarea>
+                            </div>
+                            <div class="form-check mb-4">
+                                <input class="form-check-input" type="checkbox" id="newsletter-check" name="newsletter" checked>
+                                <label class="form-check-label text-muted small" for="newsletter-check">
+                                    Deseo recibir ofertas exclusivas y novedades de CubaMax.
+                                </label>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary py-3">Enviar Mensaje</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="faq-section">
+    <div class="container">
+        <h2 class="faq-title">Preguntas Frecuentes</h2>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                ¿Cuánto tiempo tarda en llegar el envío a Cuba?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">
+                                Los envíos regulares tardan entre <strong>7 y 10 días hábiles</strong> en llegar a su destino en Cuba. El tiempo exacto puede variar según la ubicación específica en la isla y las condiciones logísticas del momento.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                ¿Qué garantía tengo si no se entrega el pedido?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">
+                                Ofrecemos una <strong>garantía de entrega del 100%</strong>. Si por alguna razón el pedido no es entregado, te reembolsaremos el importe completo o realizaremos un nuevo envío sin costo adicional.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                ¿A qué zonas de Cuba realizan envíos?
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">
+                                Realizamos envíos a <strong>todas las provincias y municipios</strong> de Cuba, incluyendo zonas rurales. Nuestro compromiso es conectar a todas las familias cubanas sin importar la distancia.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                ¿Cómo puedo rastrear mi pedido?
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">
+                                Al confirmar tu compra, recibirás un código de seguimiento por email. Puedes usar este código en nuestra sección de "Rastrear Pedido" o contactar a nuestro soporte vía WhatsApp para actualizaciones en tiempo real.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- DYNAMIC ZONE 2: Bottom -->
+<div class="container py-5" id="dynamic-zone-bottom">
+    <!-- Dynamic items injected here -->
+</div>
+
+<!-- Footer -->
+<footer class="py-5">
+    <div class="container">
+        <div class="row gy-4">
+            <div class="col-lg-4 col-md-6">
+                <h4 class="mb-4">Cuba<span>Max</span></h4>
+                <p class="text-white-50 mb-4">Conectando familias a través de servicios de calidad. Envíos seguros, rápidos y garantizados a toda Cuba desde cualquier parte del mundo.</p>
+                <div class="social-links">
+                    <a href="#" class="text-white"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
+                    <a href="https://wa.me/16822934236" class="text-white"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6">
+                <h5 class="mb-4">Navegación</h5>
+                <ul class="list-unstyled text-white-50">
+                    <li class="mb-2"><a href="index.html" class="text-white-50 text-decoration-none">Inicio</a></li>
+                    <li class="mb-2"><a href="productos.html" class="text-white-50 text-decoration-none">Productos</a></li>
+                    <li class="mb-2"><a href="como-funciona.html" class="text-white-50 text-decoration-none">Cómo Funciona</a></li>
+                    <li class="mb-2"><a href="testimonios.html" class="text-white-50 text-decoration-none">Testimonios</a></li>
+                    <li><a href="contacto.html" class="text-white-50 text-decoration-none">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5 class="mb-4">Soporte</h5>
+                <ul class="list-unstyled text-white-50">
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Centro de Ayuda</a></li>
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Rastrear Pedido</a></li>
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Términos y Condiciones</a></li>
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Política de Privacidad</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5 class="mb-4">Boletín</h5>
+                <p class="text-white-50 small">Suscríbete para recibir ofertas especiales.</p>
+                <form class="mt-3">
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control border-0" placeholder="Tu email" required>
+                        <button class="btn btn-primary" type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </form>
+                <div class="mt-4 opacity-75">
+                    <i class="fab fa-cc-visa fa-2x text-white me-2"></i>
+                    <i class="fab fa-cc-mastercard fa-2x text-white me-2"></i>
+                    <i class="fab fa-cc-paypal fa-2x text-white"></i>
+                </div>
+            </div>
+        </div>
+        <hr class="my-4 border-secondary">
+        <div class="text-center text-white-50 small">
+            <p class="mb-0">&copy; 2025 CubaMax. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Toast Container -->
+<div class="toast-container"></div>
+
+<!-- ADMIN MODALS -->
+<!-- 1. PIN Entry Modal -->
+<div id="pin-modal" class="admin-modal-overlay">
+    <div class="admin-panel text-center">
+        <div class="admin-title justify-content-center">
+            <i class="fas fa-lock text-warning"></i> Acceso Admin
+        </div>
+        <p class="text-muted mb-4">Introduce el código de seguridad para gestionar el contenido.</p>
+        <input type="password" id="pin-input" class="form-control text-center fs-3 mb-4" maxlength="6" placeholder="••••••" style="letter-spacing: 5px;">
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary" onclick="verifyPin()">Verificar</button>
+            <button class="btn btn-link text-muted" onclick="closeModals()">Cancelar</button>
+        </div>
+    </div>
+</div>
+
+<!-- 2. Product Manager Modal -->
+<div id="product-manager-modal" class="admin-modal-overlay">
+    <div class="admin-panel">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div class="admin-title mb-0">
+                <i class="fas fa-magic text-warning"></i> Editor Mágico
+            </div>
+            <button type="button" class="btn-close" onclick="closeModals()"></button>
+        </div>
+        
+        <form id="dynamic-content-form">
+            <div class="mb-3">
+                <label class="form-label small fw-bold">Título del Producto/Oferta</label>
+                <input type="text" class="form-control" id="dyn-title" placeholder="Ej. Envío Express a La Habana" required>
+            </div>
+            
+            <div class="row">
+                <div class="col-6 mb-3">
+                    <label class="form-label small fw-bold">Precio (Opcional)</label>
+                    <input type="text" class="form-control" id="dyn-price" placeholder="$0.00">
+                </div>
+                <div class="col-6 mb-3">
+                    <label class="form-label small fw-bold">Ubicación</label>
+                    <select class="form-select" id="dyn-section">
+                        <option value="dynamic-zone-top">Zona Superior (Antes de Contacto)</option>
+                        <option value="dynamic-zone-bottom">Zona Inferior (Después de FAQ)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label small fw-bold">URL de Imagen</label>
+                <input type="url" class="form-control" id="dyn-image" placeholder="https://..." required>
+                <div class="form-text">Copia el enlace de una imagen de internet.</div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label small fw-bold">Descripción</label>
+                <textarea class="form-control" id="dyn-desc" rows="3" placeholder="Detalles de la oferta..." required></textarea>
+            </div>
+
+            <div class="d-grid">
+                <button type="submit" class="btn btn-warning fw-bold text-dark">
+                    <i class="fas fa-rocket me-2"></i> Lanzar Contenido
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+<script>
+    // --- STANDARD SITE LOGIC ---
+
+    // Show toast function
+    function showToast(message, type = 'primary') {
+        const toastContainer = document.querySelector('.toast-container');
+        const toast = document.createElement('div');
+        toast.className = `custom-toast`;
+        
+        let iconClass = 'fa-info-circle';
+        let borderColor = 'var(--primary-color)';
+        
+        switch(type) {
+            case 'success': iconClass = 'fa-check-circle'; borderColor = 'var(--success-color)'; break;
+            case 'warning': iconClass = 'fa-exclamation-triangle'; borderColor = 'var(--warning-color)'; break;
+            case 'danger': iconClass = 'fa-times-circle'; borderColor = '#e74c3c'; break;
+            case 'info': iconClass = 'fa-info-circle'; borderColor = 'var(--info-color)'; break;
+        }
+        
+        toast.style.borderLeft = `5px solid ${borderColor}`;
+        toast.innerHTML = `
+            <div class="d-flex align-items-center justify-content-between mb-2 pb-2 border-bottom">
+                <strong style="color: var(--primary-color)"><i class="fas ${iconClass} me-2"></i> CubaMax</strong>
+                <button type="button" class="btn-close btn-close-sm" onclick="this.closest('.custom-toast').remove()"></button>
+            </div>
+            <div class="toast-body">${message}</div>
+        `;
+        
+        toastContainer.appendChild(toast);
+        setTimeout(() => toast.classList.add('show'), 100);
+        setTimeout(() => { toast.classList.remove('show'); setTimeout(() => toast.remove(), 500); }, 5000);
+    }
+    
+    // Contact form
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+        // e.preventDefault(); // Uncomment to test without redirect
+        showToast('Mensaje enviado correctamente. Nos pondremos en contacto contigo pronto.', 'success');
+    });
+    
+    // Navbar scroll
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        navbar.classList.toggle('shadow-sm', window.scrollY > 50);
+    });
+
+
+    // --- SECRET ADMIN LOGIC (The "Magic") ---
+
+    const SECRET_PIN = "222324";
+    let clickCount = 0;
+    let clickTimer;
+    let isAdminMode = false;
+
+    // 1. The Trigger
+    const triggerBtn = document.getElementById('secret-trigger-btn');
+    
+    triggerBtn.addEventListener('click', function(e) {
+        clickCount++;
+        
+        // Reset counter if clicks are too slow (more than 400ms apart)
+        clearTimeout(clickTimer);
+        clickTimer = setTimeout(() => {
+            // If user clicked less than 5 times, let them navigate (simulate normal link behavior)
+            if (clickCount > 0 && clickCount < 5) {
+                window.location.href = this.getAttribute('href');
+            }
+            clickCount = 0;
+        }, 400);
+
+        // If clicked rapidly 5 times or more
+        if (clickCount >= 5) {
+            e.preventDefault(); // Stop navigation
+            document.getElementById('pin-modal').style.display = 'flex';
+            document.getElementById('pin-input').focus();
+            clickCount = 0;
+        } else {
+            e.preventDefault(); // Prevent immediate navigation to allow counting
+        }
+    });
+
+    // 2. PIN Verification
+    function verifyPin() {
+        const input = document.getElementById('pin-input').value;
+        if (input === SECRET_PIN) {
+            document.getElementById('pin-modal').style.display = 'none';
+            document.getElementById('product-manager-modal').style.display = 'flex';
+            document.getElementById('pin-input').value = '';
+            isAdminMode = true;
+            renderDynamicContent(); // Re-render to show delete buttons
+            showToast('Modo Editor Activado', 'success');
+        } else {
+            showToast('Código Incorrecto', 'danger');
+            document.getElementById('pin-input').value = '';
+        }
+    }
+
+    // 3. Close Modals
+    function closeModals() {
+        document.querySelectorAll('.admin-modal-overlay').forEach(el => el.style.display = 'none');
+    }
+
+    // 4. Save & Render Logic
+    const STORAGE_KEY = 'cubamax_dynamic_content';
+
+    function getStoredContent() {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    }
+
+    function saveContent(item) {
+        const content = getStoredContent();
+        content.push(item);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(content));
+    }
+
+    function deleteContent(id) {
+        const content = getStoredContent().filter(item => item.id !== id);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(content));
+        renderDynamicContent();
+        showToast('Elemento eliminado', 'info');
+    }
+
+    // 5. Form Submission
+    document.getElementById('dynamic-content-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const newItem = {
+            id: Date.now(),
+            title: document.getElementById('dyn-title').value,
+            price: document.getElementById('dyn-price').value,
+            section: document.getElementById('dyn-section').value,
+            image: document.getElementById('dyn-image').value,
+            desc: document.getElementById('dyn-desc').value
+        };
+
+        saveContent(newItem);
+        renderDynamicContent();
+        closeModals();
+        this.reset();
+        showToast('¡Contenido lanzado con éxito!', 'success');
+        
+        // Scroll to the new item
+        document.getElementById(newItem.section).scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // 6. Rendering Engine
+    function renderDynamicContent() {
+        const content = getStoredContent();
+        const topZone = document.getElementById('dynamic-zone-top');
+        const bottomZone = document.getElementById('dynamic-zone-bottom');
+        
+        // Clear zones first
+        topZone.innerHTML = '';
+        bottomZone.innerHTML = '';
+
+        // Group by section logic could be added, but simple loop works
+        const grouped = { 'dynamic-zone-top': [], 'dynamic-zone-bottom': [] };
+        
+        content.forEach(item => {
+            if(grouped[item.section]) grouped[item.section].push(item);
+        });
+
+        // Helper to build HTML
+        const buildHTML = (items) => {
+            if(items.length === 0) return '';
+            let html = '<div class="row">';
+            items.forEach(item => {
+                html += `
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="dynamic-product-card">
+                        ${isAdminMode ? `<button class="delete-btn-admin" onclick="deleteContent(${item.id})" style="display:flex"><i class="fas fa-trash"></i></button>` : ''}
+                        <div class="dynamic-img-container">
+                            <img src="${item.image}" alt="${item.title}">
+                            ${item.price ? `<span class="badge bg-warning text-dark position-absolute bottom-0 end-0 m-3 fs-6">${item.price}</span>` : ''}
+                        </div>
+                        <div class="dynamic-card-body">
+                            <h5 class="fw-bold text-dark">${item.title}</h5>
+                            <p class="text-muted small mb-0">${item.desc}</p>
+                            <a href="Checkout.html" class="btn btn-sm btn-outline-primary w-100 mt-3">Ver Detalles</a>
+                        </div>
+                    </div>
+                </div>`;
+            });
+            html += '</div>';
+            return html;
+        };
+
+        if(grouped['dynamic-zone-top'].length > 0) {
+            topZone.innerHTML = `<h3 class="fw-bold mb-4 text-secondary border-start border-4 border-warning ps-3">Ofertas Destacadas</h3>` + buildHTML(grouped['dynamic-zone-top']);
+        }
+        
+        if(grouped['dynamic-zone-bottom'].length > 0) {
+            bottomZone.innerHTML = `<h3 class="fw-bold mb-4 text-secondary text-center">Novedades Recientes</h3>` + buildHTML(grouped['dynamic-zone-bottom']);
+        }
+    }
+
+    // Initial Render on Load
+    document.addEventListener('DOMContentLoaded', renderDynamicContent);
+
+</script>
+</body>
+</html>

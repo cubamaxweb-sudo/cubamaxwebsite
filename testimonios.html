@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CubaMax - Testimonios de Clientes</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #049899;
+            --primary-dark: #037a7a;
+            --secondary-color: #f39c12;
+            --text-color: #2c3e50;
+            --light-text: #6c757d;
+            --bg-light: #f8fbfb;
+            --white: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.95);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+        
+        body {
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            color: var(--text-color);
+            background-color: var(--bg-light);
+            overflow-x: hidden;
+        }
+        
+        /* Navbar Styles */
+        .navbar {
+            background-color: var(--white);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            letter-spacing: -0.5px;
+            color: var(--text-color);
+        }
+        
+        .navbar-brand span {
+            color: var(--primary-color);
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            color: var(--text-color);
+            padding: 0.5rem 1rem;
+            margin: 0 0.2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 80%;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 0.6rem 1.8rem;
+            font-weight: 600;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(4, 152, 153, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(4, 152, 153, 0.5);
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+            font-weight: 600;
+            border-radius: 50px;
+            padding: 0.6rem 1.8rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(4, 152, 153, 0.3);
+        }
+        
+        /* Header Section */
+        .page-header {
+            background: linear-gradient(180deg, rgba(4, 152, 153, 0.08) 0%, rgba(255,255,255,0) 100%);
+            padding: 5rem 0 3rem;
+            text-align: center;
+        }
+        
+        .section-title {
+            position: relative;
+            font-weight: 800;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        /* Stats Section */
+        .stats-container {
+            background-color: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            padding: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .stat-item h3 {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-item p {
+            color: var(--light-text);
+            font-weight: 500;
+            margin: 0;
+        }
+
+        /* Testimonial Cards */
+        .testimonial-card {
+            background-color: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+            padding: 2.5rem;
+            margin: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            border-top: 5px solid var(--primary-color);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(4, 152, 153, 0.15);
+        }
+        
+        .quote-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            opacity: 0.2;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-card .stars {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        
+        .testimonial-card .text {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            line-height: 1.7;
+            flex-grow: 1;
+        }
+        
+        .user-profile {
+            display: flex;
+            align-items: center;
+            border-top: 1px solid #eee;
+            padding-top: 1.5rem;
+        }
+        
+        .user-profile img {
+            width: 55px;
+            height: 55px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #f8f9fa;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .user-info {
+            margin-left: 1rem;
+        }
+        
+        .user-info .author {
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 0;
+            color: var(--text-color);
+        }
+        
+        .user-info .location {
+            color: var(--light-text);
+            font-size: 0.85rem;
+            margin-bottom: 2px;
+        }
+        
+        .verified-badge {
+            font-size: 0.75rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        
+        .verified-badge i {
+            margin-right: 4px;
+        }
+        
+        /* Carousel Controls */
+        .testimonial-carousel {
+            padding-bottom: 4rem;
+        }
+        
+        .carousel-indicators {
+            bottom: -10px;
+        }
+        
+        .carousel-indicators [data-bs-target] {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            opacity: 0.3;
+            margin: 0 6px;
+            border: none;
+        }
+        
+        .carousel-indicators .active {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        /* NEW PRODUCT CARD STYLE FOR DYNAMIC CONTENT */
+        .product-card-dynamic {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+            position: relative;
+        }
+
+        .product-card-dynamic:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .product-card-dynamic .img-container {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-card-dynamic .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card-dynamic:hover .img-container img {
+            transform: scale(1.05);
+        }
+
+        .product-card-dynamic .card-body {
+            padding: 1.5rem;
+        }
+
+        .product-card-dynamic .price-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(4,152,153,0.3);
+        }
+
+        .delete-btn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(220, 53, 69, 0.9);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .product-card-dynamic:hover .delete-btn,
+        .testimonial-card:hover .delete-btn {
+            opacity: 1;
+        }
+
+        /* ADMIN MODAL STYLES */
+        #adminModal .modal-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        #adminModal .modal-header {
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            border-radius: 20px 20px 0 0;
+        }
+
+        #adminModal .form-control, #adminModal .form-select {
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            padding: 12px;
+            background-color: #f8fafc;
+        }
+
+        #adminModal .form-control:focus {
+            box-shadow: 0 0 0 3px rgba(4, 152, 153, 0.2);
+            border-color: var(--primary-color);
+        }
+
+        #imagePreview {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-top: 10px;
+            display: none;
+            border: 2px dashed #cbd5e1;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            padding-top: 5rem;
+        }
+        
+        footer h4, footer h5 {
+            color: var(--white);
+            font-weight: 700;
+        }
+        
+        footer p {
+            color: #a0a0a0;
+            line-height: 1.6;
+        }
+        
+        footer a {
+            color: #a0a0a0;
+            transition: color 0.3s ease;
+        }
+        
+        footer a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            color: var(--white) !important;
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            background-color: #111;
+            padding: 1.5rem 0;
+            margin-top: 4rem;
+        }
+        
+        @media (max-width: 767.98px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            .testimonial-card {
+                margin: 10px 0;
+                padding: 2rem;
+            }
+            .stats-container {
+                padding: 1.5rem;
+            }
+            .stat-item {
+                margin-bottom: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Cuba<span>Max</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-center">
+                <!-- El ID 'magic-trigger' se usa para el script de administración -->
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html" id="magic-trigger">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="productos.html">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="como-funciona.html">Cómo Funciona</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="testimonios.html">Testimonios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contacto.html">Contacto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Checkout.html">Checkout</a>
+                </li>
+                <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                    <a href="Checkout.html" class="btn btn-primary">Hacer Pedido</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Header Section -->
+<section class="page-header">
+    <div class="container">
+        <h1 class="section-title" data-aos="fade-up">Lo Que Dicen Nuestros Clientes</h1>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+            La confianza se gana con hechos. Descubre por qué miles de familias eligen CubaMax para conectar con sus seres queridos a través de envíos seguros y de calidad.
+        </p>
+        
+        <!-- Stats -->
+        <div class="stats-container" data-aos="fade-up" data-aos-delay="200">
+            <div class="row text-center">
+                <div class="col-md-4 stat-item">
+                    <h3 class="counter">15,000+</h3>
+                    <p>Envíos Entregados</p>
+                </div>
+                <div class="col-md-4 stat-item">
+                    <h3 class="counter">99%</h3>
+                    <p>Clientes Satisfechos</p>
+                </div>
+                <div class="col-md-4 stat-item">
+                    <h3 class="counter">24/7</h3>
+                    <p>Soporte Dedicado</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- DYNAMIC CONTENT SECTIONS -->
+<!-- Section 1: Dynamic Products (Inserted via Admin) -->
+<section id="dynamic-products-section" class="py-5 bg-white d-none">
+    <div class="container">
+        <h2 class="section-title text-center mb-5" data-aos="fade-up">Novedades y Ofertas Especiales</h2>
+        <div class="row" id="dynamic-products-container">
+            <!-- Products will be injected here via JS -->
+        </div>
+    </div>
+</section>
+
+<!-- Section 2: Extra Testimonials (Inserted via Admin) -->
+<section id="dynamic-testimonials-section" class="pb-3 d-none">
+    <div class="container">
+        <h3 class="text-center mb-4 text-muted">Más experiencias recientes</h3>
+        <div class="row" id="dynamic-testimonials-container">
+            <!-- Testimonials will be injected here via JS -->
+        </div>
+    </div>
+</section>
+
+<!-- Existing Testimonials Carousel Section -->
+<section class="pb-5" id="testimonios">
+    <div class="container">
+        <div id="testimonialCarousel" class="carousel slide testimonial-carousel" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <!-- Slide 1 -->
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                            <div class="testimonial-card">
+                                <i class="fas fa-quote-left quote-icon"></i>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="text">"El paquete de comida llegó en perfecto estado y en tiempo récord. Mi familia en Holguín está muy agradecida. Definitivamente volveré a utilizar este servicio una y otra vez."</p>
+                                <div class="user-profile">
+                                    <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="María González">
+                                    <div class="user-info">
+                                        <p class="author">María González</p>
+                                        <p class="location">Miami, EE.UU.</p>
+                                        <div class="verified-badge"><i class="fas fa-check-circle"></i> Compra Verificada</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="testimonial-card">
+                                <i class="fas fa-quote-left quote-icon"></i>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="text">"Excelente servicio, fácil de usar y muy confiable. Mi madre recibió todo en perfectas condiciones y me mantuvieron informado durante todo el proceso. Lo recomiendo 100%."</p>
+                                <div class="user-profile">
+                                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Carlos Rodríguez">
+                                    <div class="user-info">
+                                        <p class="author">Carlos Rodríguez</p>
+                                        <p class="location">Madrid, España</p>
+                                        <div class="verified-badge"><i class="fas fa-check-circle"></i> Compra Verificada</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                            <div class="testimonial-card">
+                                <i class="fas fa-quote-left quote-icon"></i>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <p class="text">"Ya es la tercera vez que uso CubaMax para enviar alimentos a mi familia en La Habana. El servicio siempre ha sido puntual y los productos de buena calidad. ¡Gracias por existir!"</p>
+                                <div class="user-profile">
+                                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Ana Martínez">
+                                    <div class="user-info">
+                                        <p class="author">Ana Martínez</p>
+                                        <p class="location">Nueva York, EE.UU.</p>
+                                        <div class="verified-badge"><i class="fas fa-check-circle"></i> Compra Verificada</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 2 -->
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="testimonial-card">
+                                <i class="fas fa-quote-left quote-icon"></i>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="text">"Lo que más me gusta es la transparencia del servicio. Siempre me mantienen informado y hasta me enviaron fotos del momento de la entrega. Mi familia quedó encantada."</p>
+                                <div class="user-profile">
+                                    <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Roberto Fernández">
+                                    <div class="user-info">
+                                        <p class="author">Roberto Fernández</p>
+                                        <p class="location">Toronto, Canadá</p>
+                                        <div class="verified-badge"><i class="fas fa-check-circle"></i> Compra Verificada</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="testimonial-card">
+                                <i class="fas fa-quote-left quote-icon"></i>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="text">"Increíble la calidad de los productos. Mi familia en Cienfuegos me comentó que todo llegó fresco y en perfecto estado. El paquete familiar es muy completo y vale cada centavo."</p>
+                                <div class="user-profile">
+                                    <img src="https://randomuser.me/api/portraits/women/90.jpg" alt="Laura Díaz">
+                                    <div class="user-info">
+                                        <p class="author">Laura Díaz</p>
+                                        <p class="location">México DF, México</p>
+                                        <div class="verified-badge"><i class="fas fa-check-circle"></i> Compra Verificada</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="testimonial-card">
+                                <i class="fas fa-quote-left quote-icon"></i>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="text">"Cuando tuve un problema con mi primer pedido, el servicio al cliente fue excepcional. Resolvieron rápidamente y hasta compensaron a mi familia con productos adicionales."</p>
+                                <div class="user-profile">
+                                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Miguel Torres">
+                                    <div class="user-info">
+                                        <p class="author">Miguel Torres</p>
+                                        <p class="location">Santiago, Chile</p>
+                                        <div class="verified-badge"><i class="fas fa-check-circle"></i> Compra Verificada</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            </div>
+        </div>
+        
+        <div class="text-center mt-5" data-aos="fade-up">
+            <a href="productos.html" class="btn btn-outline-primary btn-lg">Ver Productos Disponibles</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <h4 class="mb-4">Cuba<span>Max</span></h4>
+                <p class="mb-4">Conectando familias a través de alimentos de calidad. Envíos seguros, rápidos y garantizados a toda Cuba desde cualquier parte del mundo.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                <h5 class="mb-4">Enlaces Rápidos</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="index.html">Inicio</a></li>
+                    <li class="mb-2"><a href="productos.html">Productos</a></li>
+                    <li class="mb-2"><a href="como-funciona.html">Cómo Funciona</a></li>
+                    <li class="mb-2"><a href="testimonios.html">Testimonios</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 class="mb-4">Soporte al Cliente</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#">Preguntas Frecuentes</a></li>
+                    <li class="mb-2"><a href="#">Rastrear Pedido</a></li>
+                    <li class="mb-2"><a href="#">Términos y Condiciones</a></li>
+                    <li class="mb-2"><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Centro de Ayuda</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3">
+                <h5 class="mb-4">Boletín Informativo</h5>
+                <p class="small mb-3">Suscríbete para recibir ofertas exclusivas y novedades.</p>
+                <form>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Tu correo electrónico" aria-label="Email" required>
+                        <button class="btn btn-primary" type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </form>
+                <div class="mt-4">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visa/visa-original.svg" alt="Visa" height="30" class="me-2 bg-white rounded px-1">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mastercard/mastercard-original.svg" alt="MasterCard" height="30" class="me-2 bg-white rounded px-1">
+                    <i class="fab fa-cc-paypal fa-2x text-white align-middle"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom text-center">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 CubaMax. Todos los derechos reservados. Diseñado con profesionalismo para las familias cubanas.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- ADMIN MODAL (HIDDEN) -->
+<div class="modal fade" id="adminModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-user-shield me-2"></i>Panel de Administración</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <!-- Login View -->
+                <div id="adminLoginView">
+                    <p class="text-center text-muted mb-4">Ingrese el código de seguridad para acceder.</p>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text bg-light"><i class="fas fa-key"></i></span>
+                        <input type="password" id="adminPinInput" class="form-control text-center" placeholder="PIN" maxlength="6" style="letter-spacing: 5px; font-weight: bold;">
+                    </div>
+                    <button class="btn btn-primary w-100" onclick="verifyPin()">Acceder</button>
+                    <p id="loginError" class="text-danger text-center mt-2 small" style="display:none;">Código incorrecto</p>
+                </div>
+
+                <!-- Dashboard View -->
+                <div id="adminDashboardView" style="display:none;">
+                    <form id="newItemForm">
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Sección de Destino</label>
+                            <select class="form-select" id="itemSection">
+                                <option value="products">Ofertas / Productos Nuevos</option>
+                                <option value="testimonials">Testimonios Extra</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Título / Nombre</label>
+                            <input type="text" class="form-control" id="itemTitle" placeholder="Ej: Paquete Especial o Juan Pérez" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Descripción / Comentario</label>
+                            <textarea class="form-control" id="itemDesc" rows="3" placeholder="Detalles del producto o testimonio..." required></textarea>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6 mb-3">
+                                <label class="form-label small fw-bold">Precio / Ubicación</label>
+                                <input type="text" class="form-control" id="itemMeta" placeholder="$99.00 o Miami, FL">
+                            </div>
+                            <div class="col-6 mb-3">
+                                <label class="form-label small fw-bold">Imagen</label>
+                                <input type="file" class="form-control" id="itemImage" accept="image/*" onchange="previewImage(this)">
+                            </div>
+                        </div>
+
+                        <div class="mb-3 text-center">
+                            <img id="imagePreview" src="" alt="Vista Previa">
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-primary" onclick="publishItem()">
+                                <i class="fas fa-rocket me-2"></i>Lanzar Contenido
+                            </button>
+                            <button type="button" class="btn btn-outline-danger btn-sm" onclick="clearAllData()">
+                                <i class="fas fa-trash-alt me-2"></i>Borrar Todo
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+    // Initialize AOS
+    AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+        offset: 100
+    });
+    
+    // Active nav links logic
+    document.addEventListener('DOMContentLoaded', function() {
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        
+        document.querySelectorAll('.nav-link').forEach(link => {
+            const linkHref = link.getAttribute('href');
+            if (linkHref === currentPage) {
+                link.classList.add('active');
+            }
+        });
+        
+        // Load Dynamic Content
+        loadDynamicContent();
+    });
+    
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 20) {
+            navbar.style.boxShadow = "0 4px 20px rgba(0,0,0,0.1)";
+        } else {
+            navbar.style.boxShadow = "0 2px 20px rgba(0,0,0,0.05)";
+        }
+    });
+
+    // ==========================================
+    // ADMIN SYSTEM LOGIC (SECRET)
+    // ==========================================
+    
+    let clickCounter = 0;
+    let clickTimer;
+    const triggerBtn = document.getElementById('magic-trigger');
+    const adminModal = new bootstrap.Modal(document.getElementById('adminModal'));
+    const CORRECT_PIN = "222324";
+    const STORAGE_KEY = "cubamax_dynamic_content";
+
+    // 1. Secret Trigger
+    triggerBtn.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent navigation during tapping
+        
+        clickCounter++;
+        clearTimeout(clickTimer);
+
+        if (clickCounter === 5) {
+            // Trigger Activated
+            adminModal.show();
+            clickCounter = 0;
+            resetAdminForm();
+        } else {
+            // Reset counter if user stops clicking for 1 second
+            clickTimer = setTimeout(() => {
+                clickCounter = 0;
+                if(clickCounter === 1) window.location.href = triggerBtn.href; // Navigate if just 1 click
+            }, 500);
+        }
+    });
+
+    // 2. PIN Verification
+    function verifyPin() {
+        const input = document.getElementById('adminPinInput').value;
+        if (input === CORRECT_PIN) {
+            document.getElementById('adminLoginView').style.display = 'none';
+            document.getElementById('adminDashboardView').style.display = 'block';
+            document.getElementById('loginError').style.display = 'none';
+        } else {
+            document.getElementById('loginError').style.display = 'block';
+            document.getElementById('adminPinInput').value = '';
+        }
+    }
+
+    function resetAdminForm() {
+        document.getElementById('adminLoginView').style.display = 'block';
+        document.getElementById('adminDashboardView').style.display = 'none';
+        document.getElementById('adminPinInput').value = '';
+        document.getElementById('newItemForm').reset();
+        document.getElementById('imagePreview').style.display = 'none';
+    }
+
+    // 3. Image Handling (Base64)
+    let currentImageBase64 = '';
+
+    function previewImage(input) {
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('imagePreview').src = e.target.result;
+                document.getElementById('imagePreview').style.display = 'block';
+                currentImageBase64 = e.target.result;
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    // 4. Publish Item
+    function publishItem() {
+        const section = document.getElementById('itemSection').value;
+        const title = document.getElementById('itemTitle').value;
+        const desc = document.getElementById('itemDesc').value;
+        const meta = document.getElementById('itemMeta').value; // Price or Location
+
+        if (!title || !desc) {
+            alert("Por favor completa el título y la descripción.");
+            return;
+        }
+
+        const newItem = {
+            id: Date.now(),
+            section: section,
+            title: title,
+            desc: desc,
+            meta: meta,
+            image: currentImageBase64 || (section === 'products' ? 'https://via.placeholder.com/400x300?text=Producto' : 'https://randomuser.me/api/portraits/lego/1.jpg')
+        };
+
+        // Save to LocalStorage
+        let items = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+        items.push(newItem);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+
+        // Refresh View
+        adminModal.hide();
+        loadDynamicContent();
+        alert("¡Contenido publicado con éxito!");
+    }
+
+    // 5. Load & Render Content
+    function loadDynamicContent() {
+        const items = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+        
+        const prodContainer = document.getElementById('dynamic-products-container');
+        const testContainer = document.getElementById('dynamic-testimonials-container');
+        const prodSection = document.getElementById('dynamic-products-section');
+        const testSection = document.getElementById('dynamic-testimonials-section');
+
+        prodContainer.innerHTML = '';
+        testContainer.innerHTML = '';
+
+        let hasProducts = false;
+        let hasTestimonials = false;
+
+        items.forEach(item => {
+            if (item.section === 'products') {
+                hasProducts = true;
+                prodContainer.innerHTML += `
+                    <div class="col-md-4 mb-4 animate__animated animate__fadeIn">
+                        <div class="product-card-dynamic">
+                            <button class="delete-btn" onclick="deleteItem(${item.id})"><i class="fas fa-trash"></i></button>
+                            <div class="img-container">
+                                <img src="${item.image}" alt="${item.title}">
+                                ${item.meta ? `<span class="price-tag">${item.meta}</span>` : ''}
+                            </div>
+                            <div class="card-body">
+                                <h5 class="fw-bold mb-2">${item.title}</h5>
+                                <p class="text-muted small">${item.desc}</p>
+                                <button class="btn btn-sm btn-outline-primary w-100 rounded-pill mt-2">Ver Detalles</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (item.section === 'testimonials') {
+                hasTestimonials = true;
+                testContainer.innerHTML += `
+                    <div class="col-md-6 mb-4 animate__animated animate__fadeIn">
+                        <div class="testimonial-card h-100">
+                            <button class="delete-btn" onclick="deleteItem(${item.id})"><i class="fas fa-trash"></i></button>
+                            <i class="fas fa-quote-left quote-icon"></i>
+                            <div class="stars text-warning mb-2">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p class="text">"${item.desc}"</p>
+                            <div class="user-profile mt-auto">
+                                <img src="${item.image}" alt="${item.title}">
+                                <div class="user-info">
+                                    <p class="author">${item.title}</p>
+                                    <p class="location">${item.meta || 'Cliente Verificado'}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        });
+
+        // Toggle Section Visibility
+        if (hasProducts) prodSection.classList.remove('d-none');
+        else prodSection.classList.add('d-none');
+
+        if (hasTestimonials) testSection.classList.remove('d-none');
+        else testSection.classList.add('d-none');
+    }
+
+    // 6. Delete Item
+    window.deleteItem = function(id) {
+        if(confirm('¿Estás seguro de eliminar este elemento?')) {
+            let items = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+            items = items.filter(item => item.id !== id);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+            loadDynamicContent();
+        }
+    };
+
+    // 7. Clear All
+    function clearAllData() {
+        if(confirm('ADVERTENCIA: ¿Borrar TODO el contenido personalizado?')) {
+            localStorage.removeItem(STORAGE_KEY);
+            loadDynamicContent();
+            adminModal.hide();
+        }
+    }
+
+</script>
+</body>
+</html>
